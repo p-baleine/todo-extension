@@ -1,0 +1,15 @@
+{
+  "name": "TODO",
+  "private": true,
+  "version": "0.0.1",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "grunt-cli": "latest",
+    "grunt": "latest",
+    "grunt-contrib-coffee": "latest"
+  },
+  "scripts": {
+    "grunt": "node_modules/.bin/grunt"
+  }
+}

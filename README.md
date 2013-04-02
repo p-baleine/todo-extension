@@ -9,6 +9,7 @@ Chrome Extension, Backbone.js, RequireJS, Bower.
 ```bash
 $ sudo npm install -g bower
 $ npm install bower
+$ npm install
 ```
 
 ## Links
