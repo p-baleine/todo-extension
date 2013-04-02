@@ -7,7 +7,10 @@
   "devDependencies": {
     "grunt-cli": "latest",
     "grunt": "latest",
-    "grunt-contrib-coffee": "latest"
+    "grunt-contrib-coffee": "latest",
+    "grunt-contrib-watch": "latest",
+    "karma": "latest",
+    "grunt-karma": "latest"
   },
   "scripts": {
     "grunt": "node_modules/.bin/grunt"

@@ -1,10 +1,12 @@
 
-define ["jquery"], ($) ->
-  $(() ->
-    debugger
-    hello = $("<div/>")
-    hello.html "Hello, world"
-    $("body").append hello
-  )
+define ["jquery", "backbone"], ($, Backbone) ->
 
-  () -> {}
+  AppRouter = Backbone.Router.extend
+
+    routes:
+      "": "index"
+
+    index: () ->
+      $("body").append($("<div/>", text: "Hello, world!!!"))
+
+  AppRouter

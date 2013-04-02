@@ -1,6 +1,9 @@
 
 module.exports = (grunt) ->
   grunt.initConfig
+    watch:
+      files: ["app/coffee/**/*.coffee"],
+      tasks: ["coffee"]
     coffee:
       compileWithMaps:
         options:
@@ -14,5 +17,10 @@ module.exports = (grunt) ->
             ext: ".js",
           }
         ]
+    karma:
+      unit:
+        configFile: 'karma.conf.js'
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
+  grunt.loadNpmTasks "grunt-contrib-watch"
+  grunt.loadNpmTasks "grunt-karma"

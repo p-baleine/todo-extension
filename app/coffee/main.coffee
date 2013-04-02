@@ -5,5 +5,6 @@ require.config
     "underscore": "../vendor/underscore-amd/underscore",
     "backbone": "../vendor/backbone-amd/backbone",
 
-require ["routers/app"], (App) ->
+require ["backbone", "routers/app"], (Backbone, App) ->
   new App
+  Backbone.history.start()

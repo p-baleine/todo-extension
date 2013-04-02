@@ -6,5 +6,8 @@
     "jquery": null,
     "backbone-amd": null,
     "underscore-amd": null
+  },
+  "devDependencies": {
+    "expect": null
   }
 }
