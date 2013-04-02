@@ -8,8 +8,8 @@ module.exports = (grunt) ->
         files: [
           {
             expand: true,
-            cwd: "app/",
-            src: ["coffee/**/*.coffee"],
+            cwd: "app/coffee/",
+            src: ["**/*.coffee"],
             dest: "app/js/",
             ext: ".js",
           }
