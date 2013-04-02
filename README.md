@@ -4,6 +4,13 @@ TODO app for Chrome Extension.
 This app is written for the purpose of my studying
 Chrome Extension, Backbone.js, RequireJS, Bower.
 
+## Setup
+
+```bash
+$ sudo npm install -g bower
+$ npm install bower
+```
+
 ## Links
 
 * http://dailyjs.com/2012/11/29/backbone-tutorial-1/
