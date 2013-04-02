@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "app.js",
+  "sourceRoot": "../../../app/coffee/routers/",
+  "sources": [
+    "app.coffee"
+  ],
+  "names": [],
+  "mappings": ";AACA;CAAA,CAAA,CAAmB,GAAnB,EAAO,CAAa;CAClB,EAAE,CAAF,KAAE;CACA,cAAA;CAAA,IAAA,KAAA;;CAAA,EACQ,EAAR,CAAA,EAAQ;CADR,GAEA,CAAK,CAAL,QAAA;CACA,IAAA,CAAA,OAAA;CAJF,IAAE;GAOF,MAAA,EAAA;CAAA,YAAM;CARW,IAQjB;CARF,EAAmB;CAAnB"
+}
