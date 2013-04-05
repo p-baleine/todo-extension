@@ -2,8 +2,12 @@
 module.exports = (grunt) ->
   grunt.initConfig
     watch:
-      files: ["app/coffee/**/*.coffee"],
-      tasks: ["coffee"]
+      coffee:
+        files: ["app/coffee/**/*.coffee"],
+        tasks: ["coffee"],
+      template:
+        files: ["app/coffee/templates/*.html"],
+        tasks: ["copy"],
     coffee:
       compileWithMaps:
         options:
@@ -17,6 +21,16 @@ module.exports = (grunt) ->
             ext: ".js",
           }
         ]
+    copy:
+      main:
+        files: [
+          {
+            expand: true,
+            cwd: "app/coffee/templates/",
+            src: ["*.html"],
+            dest: "app/js/templates",
+          }
+        ]
     karma:
       unit:
         configFile: 'karma.conf.js',
@@ -24,4 +38,5 @@ module.exports = (grunt) ->
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-watch"
+  grunt.loadNpmTasks "grunt-contrib-copy"
   grunt.loadNpmTasks "grunt-karma"
