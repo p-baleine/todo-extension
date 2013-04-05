@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "requirejs": null,
+    "requirejs-text": null,
     "jquery": null,
     "backbone-amd": null,
     "underscore-amd": null

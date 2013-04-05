@@ -11,6 +11,7 @@ require.config({
     "expect": "../vendor/expect/expect",
     "Squire": "../vendor/Squire.js/src/Squire",
     "require": "../vendor/requirejs/require",
+    "text": "../vendor/requirejs-text/text",
     "jquery": "../vendor/jquery/jquery",
     "underscore": "../vendor/underscore-amd/underscore",
     "backbone": "../vendor/backbone-amd/backbone"
@@ -27,7 +28,8 @@ require.config({
   paths: {
     "expect": "../vendor/expect/expect",
     "Squire": "../vendor/Squire.js/src/Squire",
-    "require": "../vendor/requirejs/require",
+    "require": "../vendor/requirejs-text/require",
+    "text": "../vendor/requirejs-text/text",
     "jquery": "../vendor/jquery/jquery",
     "underscore": "../vendor/underscore-amd/underscore",
     "backbone": "../vendor/backbone-amd/backbone"

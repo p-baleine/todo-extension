@@ -24,9 +24,12 @@ files = [
 
   { pattern: "app/vendor/Squire.js/src/Squire.js", included: false },
   { pattern: "app/vendor/jquery/jquery.js", included: false },
+  { pattern: "app/vendor/requirejs-text/text.js", included: false },
   { pattern: "app/vendor/underscore-amd/underscore.js", included: false },
   { pattern: "app/vendor/backbone-amd/backbone.js", included: false },
   { pattern: "app/js/**/*.js", included: false },
+
+  { pattern: "app/js/templates/*.html", included: false },
 
   "app/spec-main.js"
 ];

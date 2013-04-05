@@ -1,5 +1,8 @@
 
-define ["backbone", "Squire"], (Backbone, Squire) ->
+define [
+  "backbone",
+  "Squire",
+], (Backbone, Squire) ->
 
   injector = new Squire "test"
 
@@ -9,7 +12,7 @@ define ["backbone", "Squire"], (Backbone, Squire) ->
       @CollectionMock = Backbone.Collection.extend(url: "/")
       @ItemViewMock = Backbone.View.extend()
       injector.mock
-        "collections/todo": => @CollectionMock
+        "collections/todos": => @CollectionMock
         "views/item-view": => @ItemViewMock
 
     after ->

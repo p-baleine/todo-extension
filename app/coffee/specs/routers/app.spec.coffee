@@ -27,3 +27,4 @@ define ["backbone", "Squire"], (Backbone, Squire) ->
       it "should instantiate ListView", ->
         @router.index()
         expect(@initializeSpy.called).to.be.ok()
+  

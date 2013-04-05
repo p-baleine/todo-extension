@@ -7,5 +7,4 @@ define ["jquery", "backbone", "views/list-view"], ($, Backbone, ListView) ->
       "": "index"
 
     index: () ->
-      new ListView
-      $("body").append($("<div/>", text: "Hello, world!!!"))
+      new ListView el: "body"

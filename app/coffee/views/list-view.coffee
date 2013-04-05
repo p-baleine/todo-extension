@@ -2,8 +2,8 @@
 define [
   "jquery",
   "backbone",
-  "collections/todo",
-  "views/item-view"
+  "collections/todos",
+  "views/item-view",
 ], ($, Backbone, Todos, ItemView) ->
 
   ListView = Backbone.View.extend
@@ -17,5 +17,5 @@ define [
       @collection.each @renderOne, @
 
     renderOne: (model) ->
-      view = new ItemView model: model.toJSON()
-      view.render()
+      view = new ItemView model: model
+      @$el.append view.render().el
