@@ -8,6 +8,8 @@
     "underscore-amd": null
   },
   "devDependencies": {
-    "expect": null
+    "expect": null,
+    "sinon": "http://sinonjs.org/releases/sinon-1.6.0.js",
+    "Squire.js": "git://github.com/iammerrick/Squire.js.git"
   }
 }

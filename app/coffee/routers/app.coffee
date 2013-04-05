@@ -1,5 +1,5 @@
 
-define ["jquery", "backbone"], ($, Backbone) ->
+define ["jquery", "backbone", "views/list-view"], ($, Backbone, ListView) ->
 
   AppRouter = Backbone.Router.extend
 
@@ -7,6 +7,5 @@ define ["jquery", "backbone"], ($, Backbone) ->
       "": "index"
 
     index: () ->
+      new ListView
       $("body").append($("<div/>", text: "Hello, world!!!"))
-
-  AppRouter

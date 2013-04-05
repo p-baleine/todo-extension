@@ -9,7 +9,7 @@
     "grunt": "latest",
     "grunt-contrib-coffee": "latest",
     "grunt-contrib-watch": "latest",
-    "karma": "latest",
+    "karma": "canary",
     "grunt-karma": "latest"
   },
   "scripts": {

@@ -10,7 +10,7 @@
 // base path, that will be used to resolve files and exclude
 basePath = './';
 
-frameworks = ['mocha'];
+frameworks = ['mocha', 'requirejs'];
 
 // list of files / patterns to load in the browser
 files = [
@@ -20,7 +20,9 @@ files = [
   REQUIRE_ADAPTER,
 
   "app/vendor/expect/expect.js",
+  "app/vendor/sinon/index.js",
 
+  { pattern: "app/vendor/Squire.js/src/Squire.js", included: false },
   { pattern: "app/vendor/jquery/jquery.js", included: false },
   { pattern: "app/vendor/underscore-amd/underscore.js", included: false },
   { pattern: "app/vendor/backbone-amd/backbone.js", included: false },
@@ -35,7 +37,7 @@ exclude = [];
 // use dots reporter, as travis terminal does not support escaping sequences
 // possible values: 'dots', 'progress', 'junit', 'teamcity'
 // CLI --reporters progress
-reporters = ['progress', 'junit'];
+reporters = ['progress', 'junit', 'growl'];
 
 junitReporter = {
   // will be resolved to basePath (in the same way as files/exclude patterns)
@@ -87,7 +89,7 @@ singleRun = false;
 reportSlowerThan = 500;
 
 plugins = [
-  'karma-mocha',
+  'karma-jasmine',
   'karma-chrome-launcher',
   'karma-firefox-launcher',
   'karma-junit-reporter'
