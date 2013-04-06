@@ -1,7 +1,6 @@
-
 define [
-  "jquery",
-  "backbone",
+  "jquery"
+  "backbone"
 ], ($, Backbone) ->
 
   Todos = Backbone.Collection.extend
