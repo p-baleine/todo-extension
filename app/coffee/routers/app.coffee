@@ -1,7 +1,7 @@
 define [
-  "jquery",
-  "backbone",
-  "views/list-view",
+  "jquery"
+  "backbone"
+  "views/list-view"
 ], ($, Backbone, ListView) ->
 
   # App router.
