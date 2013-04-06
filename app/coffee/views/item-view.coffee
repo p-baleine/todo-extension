@@ -1,8 +1,8 @@
 define [
-  "jquery",
-  "underscore",
-  "backbone",
-  "text!templates/todo.html",
+  "jquery"
+  "underscore"
+  "backbone"
+  "text!templates/todo.html"
 ], ($, _, Backbone, itemTemplate) ->
 
   # Todo item view.
@@ -15,4 +15,3 @@ define [
 
     # Template.
     template: _.template itemTemplate
-
