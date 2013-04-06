@@ -1,8 +1,8 @@
 define [
-  "jquery",
-  "backbone",
-  "collections/todos",
-  "views/item-view",
+  "jquery"
+  "backbone"
+  "collections/todos"
+  "views/item-view"
 ], ($, Backbone, Todos, ItemView) ->
 
   # Todo list view.
