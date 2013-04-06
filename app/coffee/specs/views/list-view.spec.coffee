@@ -1,7 +1,6 @@
-
 define [
-  "backbone",
-  "Squire",
+  "backbone"
+  "Squire"
 ], (Backbone, Squire) ->
 
   injector = new Squire "test"
@@ -9,7 +8,7 @@ define [
   describe "list-view", ->
 
     before ->
-      @CollectionMock = Backbone.Collection.extend(url: "/")
+      @CollectionMock = Backbone.Collection.extend url: "/"
       @ItemViewMock = Backbone.View.extend()
       injector.mock
         "collections/todos": => @CollectionMock
@@ -34,6 +33,7 @@ define [
 
       it "should be an instance of Backbone.View", ->
         expect(@view.cid).to.match /view/
+
 
       it "should fetch TODOs", ->
         expect(@fetchSpy.called).to.be.ok()
