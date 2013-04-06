@@ -11,5 +11,5 @@ define [
       "": "index"
 
     # Start this app.
-    index: () ->
+    index: ->
       new ListView el: "body"
