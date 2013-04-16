@@ -4,12 +4,28 @@ define [
   "Squire",
 ], (Backbone, Squire) ->
 
+  injector = new Squire "test"
+
   describe "todos", ->
 
+    before ->
+      @storageStub = sinon.stub()
+      injector.mock
+        "chromeStorage": define "chromeStorage", [
+            'jquery',
+            'underscore',
+            'backbone',
+          ], ($, _, Backbone) =>
+            Backbone.ChromeStorage = @storageStub
+
+    after ->
+      Backbone.ChromeStorage = undefined
+      injector.clear
+
     beforeEach (done) ->
-      require ["collections/todos"], (Todos) =>
+      injector.require ["collections/todos"], (Todos) =>
         @collection = new Todos
         done()
 
-    it "should be an instance of Backbone.Collection", ->
-      expect(@collection).to.be.a Backbone.Collection
+    it "should use chrome.strage.*", ->
+      expect(@storageStub).to.be.ok()

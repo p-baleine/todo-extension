@@ -6,7 +6,8 @@
     "requirejs-text": null,
     "jquery": null,
     "backbone-amd": null,
-    "underscore-amd": null
+    "underscore-amd": null,
+    "backbone.chromeStorage": "git://github.com/scryptmouse/Backbone.ChromeStorage.git"
   },
   "devDependencies": {
     "expect": null,
