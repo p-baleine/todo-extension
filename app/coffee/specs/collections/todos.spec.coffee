@@ -11,9 +11,9 @@ define [
       @storageStub = sinon.stub()
       injector.mock
         "chromeStorage": define "chromeStorage", [
-            'jquery',
-            'underscore',
-            'backbone',
+            'jquery'
+            'underscore'
+            'backbone'
           ], ($, _, Backbone) =>
             Backbone.ChromeStorage = @storageStub
 
