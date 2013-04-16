@@ -1,7 +1,6 @@
-
 define [
-  "backbone",
-  "Squire",
+  "backbone"
+  "Squire"
 ], (Backbone, Squire) ->
 
   describe "item-view", ->

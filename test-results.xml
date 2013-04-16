@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="Chrome 22.0 (Linux)" package="undefined" timestamp="2013-04-16T11:18:55" id="0" hostname="tajimajunpei-UX31E" tests="7" errors="0" failures="0" time="0.015">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1229.64 Safari/537.4"/>
+    </properties>
+    <testcase name="should instantiate ListView" time="0.003" classname="Chrome 22.0 (Linux).app #index"/>
+    <testcase name="should be an instance of Backbone.View" time="0.001" classname="Chrome 22.0 (Linux).item-view"/>
+    <testcase name="should render title" time="0.002" classname="Chrome 22.0 (Linux).item-view #render"/>
+    <testcase name="should use chrome.strage.*" time="0.001" classname="Chrome 22.0 (Linux).todos"/>
+    <testcase name="should be an instance of Backbone.View" time="0.002" classname="Chrome 22.0 (Linux).list-view #initialize"/>
+    <testcase name="should fetch TODOs" time="0.001" classname="Chrome 22.0 (Linux).list-view #initialize"/>
+    <testcase name="should render item-views" time="0.005" classname="Chrome 22.0 (Linux).list-view on collections&apos; `reset`"/>
+    <system-out><![CDATA[Chrome 22.0 (Linux) ERROR
+	Uncaught SyntaxError: Invalid regular expression: /.*'specs|helpers).*\.js$/: Unmatched ')'
+	at /home/tajima-junpei/Documents/github/todo-extension/app/spec-main.js:2
+,Chrome 22.0 (Linux) ERROR
+	Uncaught Error: Script error
+	http://requirejs.org/docs/errors.html#scripterror
+	at http://localhost:9876/adapter/lib/require.js?1365027060000:1746
+,Chrome 22.0 (Linux) ERROR
+	Uncaught Error: Load timeout for modules: specs/helpers/chrome-storage-mock
+	http://requirejs.org/docs/errors.html#timeout
+	at http://localhost:9876/adapter/lib/require.js?1365027060000:1746
+
+]]></system-out>
+    <system-err/>
+  </testsuite>
+</testsuites>

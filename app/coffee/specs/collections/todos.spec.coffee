@@ -1,7 +1,6 @@
-
 define [
-  "backbone",
-  "Squire",
+  "backbone"
+  "Squire"
 ], (Backbone, Squire) ->
 
   injector = new Squire "test"

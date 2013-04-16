@@ -1,9 +1,11 @@
-
-define ["backbone", "Squire"], (Backbone, Squire) ->
+define [
+  "backbone"
+  "Squire"
+], (Backbone, Squire) ->
 
   injector = new Squire "test"
 
-  describe "app"  , ->
+  describe "app", ->
 
     before ->
       @ListViewMock = Backbone.View.extend()
