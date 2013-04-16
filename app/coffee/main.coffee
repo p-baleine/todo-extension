@@ -7,8 +7,11 @@ require.config
     "text": "../vendor/requirejs-text/text"
 
 require [
+  "jquery"
   "backbone"
   "routers/app"
-], (Backbone, App) ->
-  new App
-  Backbone.history.start()
+], ($, Backbone, App) ->
+  $(->
+    new App
+    Backbone.history.start()
+  )

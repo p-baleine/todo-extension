@@ -11,7 +11,7 @@ define [
     # Initialization.
     initialize: ->
       @collection = new Todos
-      @collection.on "reset", @render, @
+      @collection.bind "reset", @render, @
       @collection.fetch()
 
     # Render all todos.

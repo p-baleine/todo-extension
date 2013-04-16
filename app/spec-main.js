@@ -1,7 +1,7 @@
 var tests = Object.keys(window.__karma__.files).filter(function (file) {
   return /.*(specs|helpers).*\.js$/.test(file);
-  // return /.*specs.*list-view.js$/.test(file);
-  //return /.*test.js$/.test(file);
+}).sort(function(lhs, rhs) {
+  return lhs.match(/helper/) ? -1 : 1;
 });
 
 var paths = {

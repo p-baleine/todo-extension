@@ -1,8 +1,10 @@
+
 define [
   "jquery"
   "backbone"
+  "views/app-view"
   "views/list-view"
-], ($, Backbone, ListView) ->
+], ($, Backbone, AppView, ListView) ->
 
   # App router.
   AppRouter = Backbone.Router.extend
@@ -10,6 +12,10 @@ define [
     routes:
       "": "index"
 
-    # Start this app.
+    # Initialization.
+    initialize: ->
+      @appView = (new AppView el: "body").render()
+      @listView = new ListView el: @appView.$("#list-container")
+
+    # `index` route
     index: ->
-      new ListView el: "body"
