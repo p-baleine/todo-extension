@@ -7,6 +7,10 @@ define [
   # Todo list view.
   ListView = Backbone.View.extend
 
+    # Initialize.
+    initialize: ->
+      @collection.bind "add", @renderOne, @
+
     # Render all todos.
     render: ->
       @collection.each @renderOne, @

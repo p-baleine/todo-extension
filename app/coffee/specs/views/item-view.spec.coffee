@@ -19,4 +19,8 @@ define [
       it "should render title", ->
         expect(@view.render().$el.html()).to.contain @model.get("title")
 
-  
+      it "should `li` as its tagName", ->
+        expect(@view.render().el.tagName).to.match /li/i
+
+      it "should has `todo-item` as its class name", ->
+        expect(@view.$el.hasClass "todo-item").to.be.ok()

@@ -9,7 +9,7 @@ define [
 
     before ->
       @itemRenderSpy = sinon.spy -> @
-      @ItemViewMock = Backbone.View.extend
+      @ItemViewMock = sinon.spy Backbone.View.extend
         render: @itemRenderSpy
       injector.mock
         "views/item-view": => @ItemViewMock
@@ -17,16 +17,31 @@ define [
     after ->
       injector.clean()
 
-    beforeEach ->
+    beforeEach (done) ->
+      @ItemViewMock.reset()
       @itemRenderSpy.reset()
+      @todos = new Backbone.Collection [{ title: "hoge" }]
+      injector.require ["views/list-view"], (ListView) =>
+        @view = new ListView collection: @todos
+        done()
 
     describe "#render()", ->
-      beforeEach (done) ->
-        @todos = new Backbone.Collection [{ title: "hoge" }]
-        injector.require ["views/list-view"], (ListView) =>
-          @view = new ListView collection: @todos
-          done()
 
       it "should render item-views", ->
         @view.render()
-        expect(@itemRenderSpy.called).to.be.ok()      
+        expect(@itemRenderSpy.called).to.be.ok()
+
+    describe "on collection's `add` event", ->
+
+      beforeEach ->
+        @view.render()
+
+      it "should instantiate new ItemView with the added todo", ->
+        @todos.add title: "new one"
+        expect(@ItemViewMock.called).to.be.ok()
+        expect(@ItemViewMock.lastCall.args[0]).to.have.property "model"
+        expect(@ItemViewMock.lastCall.args[0].model.get("title")).to.equal "new one"
+
+      it "should render the added todo"  , ->
+        @todos.add title: "new one"
+        expect(@itemRenderSpy.called).to.be.ok()

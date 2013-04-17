@@ -16,8 +16,10 @@ define [
       @
 
     create: (e) ->
-      return if not e.keyCode? or e.keyCode isnt 13
+      return if (e.keyCode? and e.keyCode isnt 13) or (e.which? and e.which isnt 13)
       e.preventDefault()
-      @collection.create title: $(e.target).val()
+      target = $(e.target)
+      @collection.create title: target.val()
+      target.val ""
 
     template: -> _.template appTemplate

@@ -8,6 +8,10 @@ define [
   # Todo item view.
   ItemView = Backbone.View.extend
 
+    className: "todo-item"
+
+    tagName: "li"
+
     # Render this view.
     render: ->
       @$el.html @template(@model.toJSON())

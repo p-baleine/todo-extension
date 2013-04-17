@@ -51,6 +51,10 @@ define [
           @view.$("[name=new-item]").trigger @event
           expect(@createSpy.lastCall.args[0]).to.have.property "title", @title
 
+        it "should clear input after creation of todo", ->
+          @view.$("[name=new-item]").trigger @event
+          expect(@view.$("[name=new-item]").val()).to.be.empty()
+
       describe "when key pressed other than enter key", ->
 
         beforeEach ->

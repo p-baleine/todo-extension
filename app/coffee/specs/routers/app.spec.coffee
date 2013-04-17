@@ -32,6 +32,7 @@ define [
       @AppViewMock.reset()
       @ListViewMock.reset()
       @TodosMock.reset()
+      @todosFetchSpy.reset()
       @appViewRenderSpy.reset()
       @listViewRenderSpy.reset()
 
