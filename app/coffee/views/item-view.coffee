@@ -14,6 +14,11 @@ define [
 
     events:
       "change .done": "update"
+      "click .destroy": "destroy"
+
+    # Initializaton.
+    initialize: ->
+      @model.bind "destroy", @remove, @
 
     # Render this view.
     render: ->
@@ -22,7 +27,13 @@ define [
 
     # Update model.
     update: ->
-      @model.save done: @$(".done").is(":checked")
+      done = @$(".done").is(":checked")
+      @model.save done: done
+      @$el.toggleClass "done", done
+
+    # Destroy handler.
+    destroy: ->
+      @model.destroy()
 
     # Template.
     template: _.template itemTemplate

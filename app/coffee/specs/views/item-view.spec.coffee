@@ -60,3 +60,29 @@ define [
         @view.$(".done").change()
         expect(@saveSpy.called).to.be.ok()
         expect(@saveSpy.lastCall.args[0]).to.have.property "done", true
+
+      it "should add class `done` to el", ->
+        @view.$(".done").prop "checked", true
+        @view.$(".done").change()
+          expect(@view.$el.hasClass("done")).to.be.ok()
+
+    describe "delete", ->
+
+      beforeEach (done) ->
+        setUpView.call @, =>
+          @destroySpy = sinon.spy @model, "destroy"
+          @view.render().$el.appendTo "body"
+          expect(@view.$el.closest("html")).to.not.empty()
+          done()
+
+      afterEach ->
+        @model.destroy.restore()
+
+      it "should destroy deleted model", ->
+        @view.$(".destroy").click()
+        expect(@destroySpy.called).to.be.ok()
+
+      it "should remove deleted todo view", ->
+        @view.$(".destroy").click()
+        expect(@view.$el.closest("html")).to.empty()
+                
