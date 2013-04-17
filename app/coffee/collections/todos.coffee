@@ -2,11 +2,11 @@ define [
   "jquery"
   "backbone"
   "chromeStorage"
-], ($, Backbone, chromeStorage) ->
+  "models/todo"
+], ($, Backbone, chromeStorage, Todo) ->
 
   Todos = Backbone.Collection.extend
 
     chromeStorage: new Backbone.ChromeStorage "Todos", "sync"
 
-    fetch: ->
-      @reset [{ title: "hoge" }, { title: "hoge" }]
+    model: Todo

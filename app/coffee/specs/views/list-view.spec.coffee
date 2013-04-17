@@ -8,45 +8,25 @@ define [
   describe "list-view", ->
 
     before ->
-      @CollectionMock = Backbone.Collection.extend url: "/"
-      @ItemViewMock = Backbone.View.extend()
+      @itemRenderSpy = sinon.spy -> @
+      @ItemViewMock = Backbone.View.extend
+        render: @itemRenderSpy
       injector.mock
-        "collections/todos": => @CollectionMock
         "views/item-view": => @ItemViewMock
 
     after ->
       injector.clean()
 
-    setUpView = (done) ->
-      injector.require ["views/list-view"], (ListView) =>
-        @view = new ListView
-        done()
+    beforeEach ->
+      @itemRenderSpy.reset()
 
-    describe "#initialize", ->
-
+    describe "#render()", ->
       beforeEach (done) ->
-        @fetchSpy = sinon.spy @CollectionMock::, "fetch"
-        setUpView.call @, done
+        @todos = new Backbone.Collection [{ title: "hoge" }]
+        injector.require ["views/list-view"], (ListView) =>
+          @view = new ListView collection: @todos
+          done()
 
-      afterEach ->
-        @CollectionMock::fetch.restore()
-
-      it "should be an instance of Backbone.View", ->
-        expect(@view.cid).to.match /view/
-
-
-      it "should fetch TODOs", ->
-        expect(@fetchSpy.called).to.be.ok()
-  
-    describe "on collections' `reset`", ->
-
-      beforeEach (done) ->
-        @itemRenderSpy = sinon.spy @ItemViewMock::, "render"
-        setUpView.call @, done
-
-      afterEach ->
-        @ItemViewMock::render.restore()
-        
       it "should render item-views", ->
-        @view.collection.reset [{ title: "hoge" }]
-        expect(@itemRenderSpy.called).to.be.ok()
+        @view.render()
+        expect(@itemRenderSpy.called).to.be.ok()      

@@ -9,6 +9,7 @@ define [
 
     before ->
       @storageStub = sinon.stub()
+      @TodoMock = Backbone.Model.extend()
       injector.mock
         "chromeStorage": define "chromeStorage", [
             'jquery'
@@ -16,6 +17,7 @@ define [
             'backbone'
           ], ($, _, Backbone) =>
             Backbone.ChromeStorage = @storageStub
+        "models/todo": => @TodoMock
 
     after ->
       Backbone.ChromeStorage = undefined
@@ -28,3 +30,6 @@ define [
 
     it "should use chrome.strage.*", ->
       expect(@storageStub).to.be.ok()
+
+    it "should have Todo as its model", ->
+      expect(@collection).to.have.property "model", @TodoMock

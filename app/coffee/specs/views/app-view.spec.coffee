@@ -6,13 +6,56 @@ define [
 
   describe "app-view", ->
 
-    beforeEach ->
-      @view = new AppView
+    beforeEach () ->
+      @todos = new Backbone.Collection
+      @todos.url = "/"
+      @view = new AppView collection: @todos
 
     it "should be an instance of Backbone.View", ->
-      expect(@view).to.be.a Backbone.View
+      expect(@view.cid).to.match /view/
 
     describe "#render()", ->
 
       it "should render `#list-container`", ->
         expect(@view.render().$("#list-container")).to.not.empty()
+
+      it "should render input for new todo item", ->
+        expect(@view.render().$("input[name=new-item]")).to.not.empty()
+
+    describe "create new todo item", ->
+
+      beforeEach ->
+        @createSpy = sinon.spy @todos, "create"
+        @title = "Read DailyJS"
+        @event = Backbone.$.Event "keydown"
+        @event.keyCode = 13
+        @preventDefaultSpy = sinon.spy @event, "preventDefault"
+        @view.render()
+        @view.$("[name=new-item]").val @title
+
+      afterEach ->
+        @event.preventDefault.restore()
+        @todos.create.restore()
+
+      describe "when enter key pressed", ->
+  
+        it "should suspend event's default behavior", ->
+          @view.$("[name=new-item]").trigger @event
+          expect(@preventDefaultSpy.called).to.be.ok()
+
+        it "should create todo via @todos", ->
+          @view.$("[name=new-item]").trigger @event
+          expect(@createSpy.called).to.be.ok()
+
+        it "should create todo with input title", ->
+          @view.$("[name=new-item]").trigger @event
+          expect(@createSpy.lastCall.args[0]).to.have.property "title", @title
+
+      describe "when key pressed other than enter key", ->
+
+        beforeEach ->
+          @event.keyCode = 12
+  
+        it "should not suspend event's default behavior", ->
+          @view.$("[name=new-item]").trigger @event
+          expect(@preventDefaultSpy.called).to.not.be.ok()

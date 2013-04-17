@@ -1,18 +1,11 @@
 define [
   "jquery"
   "backbone"
-  "collections/todos"
   "views/item-view"
-], ($, Backbone, Todos, ItemView) ->
+], ($, Backbone, ItemView) ->
 
   # Todo list view.
   ListView = Backbone.View.extend
-
-    # Initialization.
-    initialize: ->
-      @collection = new Todos
-      @collection.bind "reset", @render, @
-      @collection.fetch()
 
     # Render all todos.
     render: ->
