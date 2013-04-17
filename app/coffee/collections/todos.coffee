@@ -5,7 +5,7 @@ define [
   "models/todo"
 ], ($, Backbone, chromeStorage, Todo) ->
 
-  Todos = Backbone.Collection.extend
+  class Todos extends Backbone.Collection
 
     chromeStorage: new Backbone.ChromeStorage "Todos", "sync"
 

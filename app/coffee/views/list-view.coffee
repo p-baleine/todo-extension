@@ -5,17 +5,17 @@ define [
 ], ($, Backbone, ItemView) ->
 
   # Todo list view.
-  ListView = Backbone.View.extend
+  class ListView extends Backbone.View
 
     # Initialize.
     initialize: ->
-      @collection.bind "add", @renderOne, @
+      @collection.bind "add", @renderOne
 
     # Render all todos.
     render: ->
-      @collection.each @renderOne, @
+      @collection.each @renderOne
 
     # Render one todo.
-    renderOne: (model) ->
+    renderOne: (model) =>
       view = new ItemView model: model
       @$el.append view.render().el

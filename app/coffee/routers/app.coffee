@@ -8,7 +8,7 @@ define [
 ], ($, Backbone, Todos, AppView, ListView) ->
 
   # App router.
-  AppRouter = Backbone.Router.extend
+  class AppRouter extends Backbone.Router
 
     routes:
       "": "index"

@@ -3,4 +3,7 @@ define [
   "backbone"
 ], (Backbone) ->
 
-  Todo = Backbone.Model.extend()
+  class Todo extends Backbone.Model
+
+    defaults:
+      done: false

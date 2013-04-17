@@ -6,7 +6,7 @@ define [
   "text!templates/app.html"
 ], ($, _, Backbone, appTemplate) ->
 
-  AppView = Backbone.View.extend
+  class AppView extends Backbone.View
 
     events:
       "keydown [name=new-item]": "create"
