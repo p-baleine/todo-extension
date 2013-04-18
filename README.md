@@ -1,6 +1,9 @@
 # TODO Chrome Extension
 
 TODO app for Chrome Extension.
+
+![screenshot](https://row.github.com/p-baleine/todo-extension/master/screenshot.png)
+
 This app is written for the purpose of my studying
 Chrome Extension, Backbone.js, RequireJS, Bower.
 
