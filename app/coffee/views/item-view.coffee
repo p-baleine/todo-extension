@@ -30,7 +30,8 @@ define [
       @
 
     # Make editable.
-    edit: ->
+    edit: (e) ->
+      e.preventDefault()
       @$el.addClass "editable"
 
     # Update model.
