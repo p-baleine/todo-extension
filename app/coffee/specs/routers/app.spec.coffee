@@ -14,9 +14,7 @@ define [
         @
       @AppViewMock = sinon.spy Backbone.View.extend
         render: @appViewRenderSpy
-      @listViewRenderSpy = sinon.spy -> @
-      @ListViewMock = sinon.spy Backbone.View.extend
-        render: @listViewRenderSpy
+      @ListViewMock = sinon.spy Backbone.View.extend()
       @todosFetchSpy = sinon.spy -> { then: (cb) -> cb() }
       @TodosMock = sinon.spy Backbone.Collection.extend
         fetch: @todosFetchSpy
@@ -34,7 +32,6 @@ define [
       @TodosMock.reset()
       @todosFetchSpy.reset()
       @appViewRenderSpy.reset()
-      @listViewRenderSpy.reset()
 
     describe "#initialize()", ->
 
@@ -79,7 +76,3 @@ define [
       it "should fetch todos", ->
         @router.index()
         expect(@todosFetchSpy.called).to.be.ok()
-
-      it "should render list view", ->
-        @router.index()
-        expect(@listViewRenderSpy.called).to.be.ok()

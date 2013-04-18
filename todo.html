@@ -8,8 +8,17 @@
         overflow-x: hidden;
       }
 
+      .todo-item .edit {
+        display: none;
+      }
+      .todo-item.editable .edit {
+        display: inline;
+      }
+      .todo-item.editable .view {
+        display: none;
+      }
       .todo-item.done .view {
-        text-decoration: line-through
+        text-decoration: line-through;
       }
     </style>
 

@@ -21,4 +21,4 @@ define [
 
     # `index` route
     index: ->
-      @todos.fetch().then => @listView.render()
+      @todos.fetch()

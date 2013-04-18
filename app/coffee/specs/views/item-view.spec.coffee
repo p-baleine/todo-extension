@@ -34,6 +34,9 @@ define [
         it "should render done as checked", ->
           expect(@view.render().$(".done").is(":checked")).to.be.ok()
 
+        it "should add `done` class to el", ->
+          expect(@view.render().$el.hasClass("done")).to.be.ok()
+
       describe "when the status is not done", ->
 
         beforeEach (done) ->
@@ -42,6 +45,57 @@ define [
         it "should render done as not checked", ->
           expect(@view.render().$(".done").is(":checked")).to.not.be.ok()
 
+    describe "make editable on dblclick", ->
+
+      beforeEach ->
+        @view.render()
+
+      it "should add `editable` class to el", ->
+        @view.$(".view").trigger("dblclick")
+        expect(@view.$el.hasClass("editable")).to.be.ok()
+
+    describe "update todo", ->
+
+      beforeEach (done) ->
+        setUpView.call @, =>
+          @saveSpy = sinon.spy @model, "save"
+          @view.render()
+          @view.$el.addClass "editable"
+          @content = "update content"
+          @view.$(".edit").val "update content"
+          @event = Backbone.$.Event "keydown"
+          @event.keyCode = 13
+          @preventDefaultSpy = sinon.spy @event, "preventDefault"
+          done()
+
+      afterEach ->
+        @model.save.restore()
+        @event.preventDefault.restore()
+
+      describe "when enter key pressed", ->
+  
+        it "should suspend event's default behavior", ->
+          @view.$(".edit").trigger @event
+          expect(@preventDefaultSpy.called).to.be.ok()
+        
+        it "should save model with new content", ->
+          @view.$(".edit").trigger @event
+          expect(@saveSpy.called).to.be.ok()
+          expect(@saveSpy.lastCall.args[0]).to.have.property "title", @content
+  
+        it "should remove `editable` class from el", ->
+          @view.$(".edit").trigger @event
+          expect(@view.$el.hasClass("editable")).to.not.be.ok()
+
+      describe "when key pressed other than enter key", ->
+
+        beforeEach ->
+          @event.keyCode = 12
+  
+        it "should not suspend event's default behavior", ->
+          @view.$(".edit").trigger @event
+          expect(@preventDefaultSpy.called).to.not.be.ok()
+  
     describe "make done", ->
 
       beforeEach (done) ->
@@ -64,7 +118,7 @@ define [
       it "should add class `done` to el", ->
         @view.$(".done").prop "checked", true
         @view.$(".done").change()
-          expect(@view.$el.hasClass("done")).to.be.ok()
+        expect(@view.$el.hasClass("done")).to.be.ok()
 
     describe "delete", ->
 
@@ -85,4 +139,3 @@ define [
       it "should remove deleted todo view", ->
         @view.$(".destroy").click()
         expect(@view.$el.closest("html")).to.empty()
-                
