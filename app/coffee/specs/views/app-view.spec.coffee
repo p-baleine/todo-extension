@@ -15,6 +15,18 @@ define [
     it "should be an instance of Backbone.View", ->
       expect(@view.cid).to.match /view/
 
+    describe "todos `reset` event", ->
+
+      beforeEach ->
+        @renderSpy = sinon.spy @view, "render"
+
+      afterEach ->
+        @view.render.restore()
+
+      it "should render", ->
+        @todos.trigger "reset"
+        expect(@renderSpy.called).to.be.ok()
+
     describe "#render()", ->
 
       it "should render `#list-container`", ->

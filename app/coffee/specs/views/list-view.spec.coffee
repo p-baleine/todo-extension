@@ -25,6 +25,18 @@ define [
         @view = new ListView collection: @todos
         done()
 
+    describe "todos `reset` event", ->
+
+      beforeEach ->
+        @renderSpy = sinon.spy @view, "render"
+
+      afterEach ->
+        @view.render.restore()
+
+      it "should render", ->
+        @todos.trigger "reset"
+        expect(@renderSpy.called).to.be.ok()
+
     describe "#render()", ->
 
       it "should render item-views", ->
