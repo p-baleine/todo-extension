@@ -76,3 +76,7 @@ define [
       it "should fetch todos", ->
         @router.index()
         expect(@todosFetchSpy.called).to.be.ok()
+
+      it "should fetch with reset true", ->
+        @router.index()
+        expect(@todosFetchSpy.lastCall.args[0]).to.have.property "reset", true
