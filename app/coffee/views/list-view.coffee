@@ -9,10 +9,11 @@ define [
 
     # Initialize.
     initialize: ->
+      @collection.bind "reset", @render
       @collection.bind "add", @renderOne
 
     # Render all todos.
-    render: ->
+    render: =>
       @collection.each @renderOne
 
     # Render one todo.

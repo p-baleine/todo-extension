@@ -11,7 +11,10 @@ define [
     events:
       "keydown [name=new-item]": "create"
 
-    render: ->
+    initialize: ->
+      @collection.bind "reset", @render
+
+    render: =>
       @.$el.html @template(remain: @collection.remain())
       @
 

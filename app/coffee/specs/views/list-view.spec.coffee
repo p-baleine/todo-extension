@@ -27,15 +27,9 @@ define [
 
     describe "todos `reset` event", ->
 
-      beforeEach ->
-        @renderSpy = sinon.spy @view, "render"
-
-      afterEach ->
-        @view.render.restore()
-
       it "should render", ->
         @todos.trigger "reset"
-        expect(@renderSpy.called).to.be.ok()
+        expect(@view.$el).to.not.empty()
 
     describe "#render()", ->
 
