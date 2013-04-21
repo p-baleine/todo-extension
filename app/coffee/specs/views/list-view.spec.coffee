@@ -52,6 +52,13 @@ define [
           _(@ItemViewMock.args).each (arg) ->
             expect(arg[0].model.get("done")).to.be false
 
+      describe "filter by `completed`", ->
+
+        it "should render only completed todos" , ->
+          @view.render "completed"
+          _(@ItemViewMock.args).each (arg) ->
+            expect(arg[0].model.get("done")).to.be true
+
     describe "on collection's `add` event", ->
 
       beforeEach ->

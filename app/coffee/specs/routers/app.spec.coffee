@@ -63,3 +63,9 @@ define [
       it "should render todos", ->
         @router.index()
         expect(@appViewRenderSpy.called).to.be.ok()
+
+    describe "route `index/<filter>`", ->
+
+      it "should render todos with passed filter", ->
+        @router.index "active"
+        expect(@appViewRenderSpy.lastCall.args[0]).to.equal "active"
