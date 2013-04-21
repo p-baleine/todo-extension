@@ -4,8 +4,7 @@ define [
   "backbone"
   "collections/todos"
   "views/app-view"
-  "views/list-view"
-], ($, Backbone, Todos, AppView, ListView) ->
+], ($, Backbone, Todos, AppView) ->
 
   # App router.
   class AppRouter extends Backbone.Router
@@ -16,9 +15,8 @@ define [
     # Initialization.
     initialize: ->
       @todos = new Todos
-      @appView = (new AppView el: "body", collection: @todos).render()
-      @listView = new ListView el: @appView.$("#list-container"), collection: @todos
+      @appView = new AppView el: "body", collection: @todos
 
     # `index` route
     index: ->
-      @todos.fetch()
+      @todos.fetch(reset: true)

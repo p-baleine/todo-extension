@@ -14,13 +14,11 @@ define [
         @
       @AppViewMock = sinon.spy Backbone.View.extend
         render: @appViewRenderSpy
-      @ListViewMock = sinon.spy Backbone.View.extend()
       @todosFetchSpy = sinon.spy -> { then: (cb) -> cb() }
       @TodosMock = sinon.spy Backbone.Collection.extend
         fetch: @todosFetchSpy
       injector.mock
         "views/app-view": => @AppViewMock
-        "views/list-view": => @ListViewMock
         "collections/todos": => @TodosMock
 
     after ->
@@ -28,7 +26,6 @@ define [
 
     beforeEach ->
       @AppViewMock.reset()
-      @ListViewMock.reset()
       @TodosMock.reset()
       @todosFetchSpy.reset()
       @appViewRenderSpy.reset()
@@ -54,22 +51,6 @@ define [
         it "should pass `todos` to AppView as `collection`", ->
           expect(@AppViewMock.lastCall.args[0]).to.have.property "collection"
           expect(@AppViewMock.lastCall.args[0].collection).to.be.a(@TodosMock)
-  
-        it "should render AppView", ->
-          expect(@appViewRenderSpy.called).to.be.ok()
-
-      describe "ListView", ->
-  
-        it "should instantiate ListView", ->
-          expect(@ListViewMock.called).to.be.ok()
-
-        it "should pass `#list-container` to ListView as `el`", ->
-          expect(@ListViewMock.lastCall.args[0]).to.have.property "el"
-          expect(@ListViewMock.lastCall.args[0].el.attr("id")).to.equal "list-container"
-
-        it "should pass `todos` to ListView as `collection`", ->
-          expect(@ListViewMock.lastCall.args[0]).to.have.property "collection"
-          expect(@ListViewMock.lastCall.args[0].collection).to.be.a(@TodosMock)
 
     describe "route `index`", ->
 

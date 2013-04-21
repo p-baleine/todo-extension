@@ -1,16 +1,31 @@
 
 define [
   "backbone"
-  "views/app-view"
-], (Backbone, AppView) ->
+  "Squire"
+], (Backbone, Squire) ->
+
+  injector = new Squire "test"
 
   describe "app-view", ->
 
-    beforeEach () ->
-      @todos = new Backbone.Collection
-      @todos.url = "/"
-      @remainSpy = @todos.remain = sinon.spy(-> 3)
-      @view = new AppView collection: @todos
+    before ->
+      @ListViewMock = sinon.spy Backbone.View.extend()
+      injector.mock
+        "views/list-view": => @ListViewMock
+
+    after ->
+      injector.clean()
+
+    beforeEach (done) ->
+      injector.require ["views/app-view"], (AppView) =>
+        @todos = new Backbone.Collection
+        @todos.url = "/"
+        @remainSpy = @todos.remain = sinon.spy(-> 3)
+        @view = new AppView collection: @todos
+        done()
+
+    afterEach ->
+      @ListViewMock.reset()
 
     it "should be an instance of Backbone.View", ->
       expect(@view.cid).to.match /view/
@@ -35,6 +50,20 @@ define [
 
       it "should render remain items count", ->
         expect(@view.render().$("#remain").text()).to.contain(3)      
+
+      it "should instantiate ListView", ->
+        @view.render()
+        expect(@ListViewMock.called).to.be.ok()
+
+      it "should pass `#list-container` to ListView as `el`", ->
+        @view.render()
+        expect(@ListViewMock.lastCall.args[0]).to.have.property "el"
+        expect(@ListViewMock.lastCall.args[0].el.attr("id")).to.equal "list-container"
+
+      it "should pass `todos` to ListView as `collection`", ->
+        @view.render()
+        expect(@ListViewMock.lastCall.args[0]).to.have.property "collection"
+        expect(@ListViewMock.lastCall.args[0].collection).to.equal(@view.collection)
 
     describe "create new todo item", ->
 

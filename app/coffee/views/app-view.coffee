@@ -3,8 +3,9 @@ define [
   "jquery"
   "underscore"
   "backbone"
+  "views/list-view"
   "text!templates/app.html"
-], ($, _, Backbone, appTemplate) ->
+], ($, _, Backbone, ListView, appTemplate) ->
 
   class AppView extends Backbone.View
 
@@ -16,6 +17,8 @@ define [
 
     render: =>
       @.$el.html @template(remain: @collection.remain())
+      @listView = new ListView el: @$("#list-container"), collection: @collection
+      @listView.render()
       @
 
     create: (e) ->
