@@ -52,12 +52,14 @@ define [
           expect(@AppViewMock.lastCall.args[0]).to.have.property "collection"
           expect(@AppViewMock.lastCall.args[0].collection).to.be.a(@TodosMock)
 
+        it "should fetch todos", ->
+          expect(@todosFetchSpy.called).to.be.ok()
+
+        it "should fetch with reset true", ->
+          expect(@todosFetchSpy.lastCall.args[0]).to.have.property "reset", true
+
     describe "route `index`", ->
 
-      it "should fetch todos", ->
+      it "should render todos", ->
         @router.index()
-        expect(@todosFetchSpy.called).to.be.ok()
-
-      it "should fetch with reset true", ->
-        @router.index()
-        expect(@todosFetchSpy.lastCall.args[0]).to.have.property "reset", true
+        expect(@appViewRenderSpy.called).to.be.ok()

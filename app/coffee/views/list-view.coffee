@@ -12,8 +12,10 @@ define [
       @collection.bind "add", @renderOne
 
     # Render all todos.
-    render: =>
-      @collection.each @renderOne
+    render: (filter) =>
+      switch filter
+        when "active" then _(@collection.where(done: false)).each @renderOne
+        else @collection.each @renderOne
 
     # Render one todo.
     renderOne: (model) =>

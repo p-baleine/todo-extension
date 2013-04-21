@@ -16,10 +16,10 @@ define [
       @collection.bind "reset", @render
       @collection.bind "change-remain remove add", @updateStats
 
-    render: =>
+    render: (filter = "none") =>
       @$el.html @template(remain: @collection.remain())
       @listView = new ListView el: @$("#list-container"), collection: @collection
-      @listView.render()
+      @listView.render filter
       @
 
     create: (e) ->

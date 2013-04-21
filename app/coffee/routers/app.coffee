@@ -10,13 +10,15 @@ define [
   class AppRouter extends Backbone.Router
 
     routes:
-      "": "index"
+      "index": "index"
+      "index/:filter": "index"
 
     # Initialization.
     initialize: ->
       @todos = new Todos
       @appView = new AppView el: "body", collection: @todos
+      @todos.fetch reset: true
 
     # `index` route
-    index: ->
-      @todos.fetch(reset: true)
+    index: (filter = "none") ->
+      @appView.render filter

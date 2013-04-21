@@ -72,6 +72,12 @@ define [
         @view.render()
         expect(@listViewRenderSpy.called).to.be.ok()
 
+      describe "render with filter", ->
+
+        it "should render ListView with filter", ->
+          @view.render "filter-1"
+          expect(@listViewRenderSpy.lastCall.args[0]).to.equal "filter-1"
+
     describe "create new todo item", ->
 
       beforeEach ->
