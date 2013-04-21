@@ -18,8 +18,8 @@ define [
 
   describe "when done status change", ->
 
-  	it "should trigger `change-remain` to its collection", ->
-  	  spy = sinon.spy()
-  	  @collection.on "change-remain", spy
-  	  @model.set done: true
-  	  expect(spy.called).to.be.ok()
+    it "should trigger `change-remain` to its collection", ->
+      spy = sinon.spy()
+      @collection.on "change-remain", spy
+      @model.set done: true
+      expect(spy.called).to.be.ok()
