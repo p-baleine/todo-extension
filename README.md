@@ -1,4 +1,4 @@
-# TODO Chrome Extension
+# TODO Chrome Extension [![Build Status](https://travis-ci.org/p-baleine/todo-extension.png?branch=master)](https://travis-ci.org/p-baleine/todo-extension)
 
 TODO app for Chrome Extension.
 
@@ -33,7 +33,7 @@ $ grunt copy
 
 * Open Tools-->Extensions (ensure Development mode is checked) and click on "Load unpacked extension..." to install the extension. You will need to reload Chrome once the extension is installed.
 
-## Developmetn
+## Development
 
 ### Start
 
