@@ -9,7 +9,9 @@ define [
   describe "app-view", ->
 
     before ->
-      @ListViewMock = sinon.spy Backbone.View.extend()
+      @listViewRenderSpy = sinon.spy -> @
+      @ListViewMock = sinon.spy Backbone.View.extend
+        render: @listViewRenderSpy
       injector.mock
         "views/list-view": => @ListViewMock
 
@@ -25,6 +27,7 @@ define [
         done()
 
     afterEach ->
+      @listViewRenderSpy.reset()
       @ListViewMock.reset()
 
     it "should be an instance of Backbone.View", ->
@@ -64,6 +67,10 @@ define [
         @view.render()
         expect(@ListViewMock.lastCall.args[0]).to.have.property "collection"
         expect(@ListViewMock.lastCall.args[0].collection).to.equal(@view.collection)
+
+      it "should render ListView", ->
+        @view.render()
+        expect(@listViewRenderSpy.called).to.be.ok()
 
     describe "create new todo item", ->
 
