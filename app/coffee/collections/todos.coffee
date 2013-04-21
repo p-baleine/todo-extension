@@ -10,3 +10,6 @@ define [
     chromeStorage: new Backbone.ChromeStorage "Todos", "sync"
 
     model: Todo
+
+    remain: ->
+      @where(done: false).length
