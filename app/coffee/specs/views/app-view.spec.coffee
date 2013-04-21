@@ -9,6 +9,7 @@ define [
     beforeEach () ->
       @todos = new Backbone.Collection
       @todos.url = "/"
+      @remainSpy = @todos.remain = sinon.spy(-> 3)
       @view = new AppView collection: @todos
 
     it "should be an instance of Backbone.View", ->
@@ -21,6 +22,13 @@ define [
 
       it "should render input for new todo item", ->
         expect(@view.render().$("input[name=new-item]")).to.not.empty()
+
+      it "should query remain items count to collection", ->
+        @view.render()
+        expect(@rmainSpy.called).to.be.ok()
+
+      it "should render remain items count", ->
+        expect(@view.render().$(".remain-count").text()).to.contain(3)      
 
     describe "create new todo item", ->
 
