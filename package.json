@@ -5,6 +5,7 @@
   "dependencies": {
   },
   "devDependencies": {
+    "bower": "latest",
     "grunt-cli": "latest",
     "grunt": "latest",
     "grunt-contrib-coffee": "latest",
