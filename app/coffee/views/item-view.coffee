@@ -25,7 +25,7 @@ define [
 
     # Render this view.
     render: =>
-      @$el.html @template(@model.toJSON())
+      @$el.html @template @model.toJSON()
       @$el.addClass "done" if @model.get("done")
       @
 
