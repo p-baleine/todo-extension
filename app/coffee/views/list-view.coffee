@@ -14,8 +14,8 @@ define [
     # Render all todos.
     render: (filter) =>
       switch filter
-        when "active" then _(@collection.where(done: false)).each @renderOne
-        when "completed" then _(@collection.where(done: true)).each @renderOne
+        when "active" then @collection.chain().where(done: false).each @renderOne
+        when "completed" then @collection.chain().where(done: true).each @renderOne
         else @collection.each @renderOne
 
     # Render one todo.
