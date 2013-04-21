@@ -12,7 +12,8 @@ define [
       "keydown [name=new-item]": "create"
 
     render: ->
-      @.$el.html @template()
+      console.log @collection.remain()
+      @.$el.html @template(remain: @collection.remain())
       @
 
     create: (e) ->
@@ -22,4 +23,4 @@ define [
       @collection.create title: target.val()
       target.val ""
 
-    template: -> _.template appTemplate
+    template: _.template appTemplate

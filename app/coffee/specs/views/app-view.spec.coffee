@@ -25,10 +25,10 @@ define [
 
       it "should query remain items count to collection", ->
         @view.render()
-        expect(@rmainSpy.called).to.be.ok()
+        expect(@remainSpy.called).to.be.ok()
 
       it "should render remain items count", ->
-        expect(@view.render().$(".remain-count").text()).to.contain(3)      
+        expect(@view.render().$("#remain").text()).to.contain(3)      
 
     describe "create new todo item", ->
 
