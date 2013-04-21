@@ -9,7 +9,6 @@ define [
 
     # Initialize.
     initialize: ->
-      #@collection.bind "reset", @render
       @collection.bind "add", @renderOne
 
     # Render all todos.
