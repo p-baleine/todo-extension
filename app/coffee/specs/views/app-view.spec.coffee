@@ -106,3 +106,37 @@ define [
         it "should not suspend event's default behavior", ->
           @view.$("[name=new-item]").trigger @event
           expect(@preventDefaultSpy.called).to.not.be.ok()
+
+    describe "update remain count", ->
+
+      setUpView = (remainCount) ->
+        @view.render()
+        @remainSpy = @todos.remain = sinon.spy(-> remainCount)
+
+
+      describe "collection's `change-remain` event", ->
+
+        beforeEach ->
+          setUpView.call @, 5
+
+        it "should update remain items count", ->
+          @todos.trigger "change-remain"
+          expect(@view.$("#remain").text()).to.contain(5)
+
+      describe "collection's `add` event", ->
+
+        beforeEach ->
+          setUpView.call @, 6
+
+        it "should update remain items count", ->
+          @todos.trigger "add"
+          expect(@view.$("#remain").text()).to.contain(6)
+
+      describe "collection's `remove` event", ->
+
+        beforeEach ->
+          setUpView.call @, 4
+
+        it "should update remain items count", ->
+          @todos.trigger "remove"
+          expect(@view.$("#remain").text()).to.contain(4)

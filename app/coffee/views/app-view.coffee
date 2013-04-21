@@ -14,9 +14,10 @@ define [
 
     initialize: ->
       @collection.bind "reset", @render
+      @collection.bind "change-remain remove add", @updateStats
 
     render: =>
-      @.$el.html @template(remain: @collection.remain())
+      @$el.html @template(remain: @collection.remain())
       @listView = new ListView el: @$("#list-container"), collection: @collection
       @listView.render()
       @
@@ -27,5 +28,8 @@ define [
       target = $(e.target)
       @collection.create title: target.val()
       target.val ""
+
+    updateStats: =>
+      @$("#remain").text @collection.remain()
 
     template: _.template appTemplate
