@@ -33,3 +33,14 @@ define [
 
     it "should have Todo as its model", ->
       expect(@collection).to.have.property "model", @TodoMock
+
+    describe "#remain()", ->
+
+      beforeEach ->
+        @collection.reset [
+          { title: "hello", done: true }
+          { title: "world", done: false }
+        ]
+
+      it "should return the remain count of items", ->
+        expect(@collection.remain()).to.equal 1

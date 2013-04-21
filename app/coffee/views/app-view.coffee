@@ -12,7 +12,6 @@ define [
       "keydown [name=new-item]": "create"
 
     render: ->
-      console.log @collection.remain()
       @.$el.html @template(remain: @collection.remain())
       @
 
