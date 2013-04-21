@@ -39,7 +39,7 @@ $ grunt copy
 
 ```bash
 $ grunt watch
-$ grunt karma # in another tab
+$ grunt karma:unit # in another tab
 ```
 
 Then start BDD!
