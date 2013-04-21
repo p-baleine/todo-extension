@@ -14,12 +14,15 @@ body {
   font: 14px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
   overflow-x: hidden;
   padding: 10px;
+  padding-bottom: 20px;
 }
 ul {
+  padding: 0;
+  list-style: none;  
+}
+ul#list-container {
   max-height: 150px;
   overflow-y: scroll;
-  padding: 0;
-  list-style: none;
   margin-top: 0;
 }
 li {
@@ -77,11 +80,32 @@ form input[name=new-item] {
 .todo-item .destroy:hover {
   background: #fbfbfb;
 }
+#stats,#filters {
+  font-size: 10px;  
+}
 #stats {
-  text-align: right;
+  float:left;
 }
 #remain strong {
   font-style: italic;
+}
+ul#filters {
+  margin: 0;
+  float: right;
+}
+ul#filters li {
+  margin-right: 5px;
+  display: inline;
+}
+ul#filters a {
+  text-decoration: none;
+  font-weight: normal;
+  color: #808080;
+}
+ul#filters.none a[href="#index"],
+ul#filters.active a[href*="active"],
+ul#filters.completed a[href*="completed"] {
+  font-weight: bold;
 }
 
 .todo-item .edit {

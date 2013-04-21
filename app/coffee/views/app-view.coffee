@@ -20,6 +20,7 @@ define [
       @$el.html @template(remain: @collection.remain())
       @listView = new ListView el: @$("#list-container"), collection: @collection
       @listView.render filter
+      @$("#filters").removeClass().addClass filter
       @
 
     create: (e) ->
