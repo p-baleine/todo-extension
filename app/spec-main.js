@@ -15,6 +15,8 @@ var paths = {
   "chromeStorage": "../vendor/backbone.chromeStorage/backbone.chromestorage"
 };
 
+mocha.setup({ ignoreLeaks: true });
+
 require.config({
   // Karma serves files from "/base"
   baseUrl: "/base/app/js",
@@ -30,3 +32,4 @@ require.config({
   baseUrl: "/base/app/js",
   paths: paths
 });
+

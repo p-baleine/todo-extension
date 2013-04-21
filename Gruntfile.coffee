@@ -34,6 +34,10 @@ module.exports = (grunt) ->
       unit:
         configFile: 'karma.conf.js'
         autoWatch: true
+      ci:
+        configFile: 'karma.conf.js'
+        browsers: ["PhantomJS"]
+        singleRun: true
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-watch"

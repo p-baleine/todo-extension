@@ -11,4 +11,4 @@ before_script:
   - ./node_modules/.bin/grunt copy
 
 script:
-  - ./node_modules/.bin/grunt karma
+  - ./node_modules/.bin/grunt karma:ci
