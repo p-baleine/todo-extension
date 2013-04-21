@@ -8,7 +8,7 @@ define [
 
     beforeEach ->
       @collection
-      @model = new Todo collection: @collection
+      @model = new Todo {}, collection: @collection
 
     it "should be an instance of Backbone.Model", ->
       expect(@model).to.be.a Backbone.Model

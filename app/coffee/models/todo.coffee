@@ -7,3 +7,6 @@ define [
 
     defaults:
       done: false
+
+    initialize: ->
+      @on "change:done", => @collection.trigger "change-remain"
