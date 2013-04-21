@@ -77,6 +77,12 @@ form input[name=new-item] {
 .todo-item .destroy:hover {
   background: #fbfbfb;
 }
+#stats {
+  text-align: right;
+}
+#remain strong {
+  font-style: italic;
+}
 
 .todo-item .edit {
   display: none;

@@ -30,6 +30,6 @@ define [
       target.val ""
 
     updateStats: =>
-      @$("#remain").text @collection.remain()
+      @$("#remain strong").text @collection.remain()
 
     template: _.template appTemplate
