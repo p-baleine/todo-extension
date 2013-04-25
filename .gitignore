@@ -4,3 +4,4 @@ app/js
 node_modules
 test-results.xml
 dist
+dist.zip
