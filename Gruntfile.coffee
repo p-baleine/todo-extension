@@ -6,7 +6,7 @@ module.exports = (grunt) ->
         tasks: ["coffee"]
       template:
         files: ["app/coffee/templates/*.html"]
-        tasks: ["copy"]
+        tasks: ["copy:template"]
     coffee:
       compileWithMaps:
         options:
@@ -21,13 +21,28 @@ module.exports = (grunt) ->
           }
         ]
     copy:
-      main:
+      template:
         files: [
           {
             expand: true
             cwd: "app/coffee/templates/"
             src: ["*.html"]
             dest: "app/js/templates"
+          }
+        ]
+      build:
+        files: [
+          {
+            expand: true
+            cwd: "./"
+            src: ["todo.html", "style.css", "manifest.json", "icon.png"]
+            dest: "dist"
+          }
+          {
+            expand: true
+            cwd: "app/vendor/requirejs/"
+            src: ["require.js"]
+            dest: "dist/app/vendor/requirejs"
           }
         ]
     karma:
@@ -38,8 +53,19 @@ module.exports = (grunt) ->
         configFile: 'karma.conf.js'
         browsers: ["PhantomJS"]
         singleRun: true
+    requirejs:
+      compile:
+        options:
+          name: "main"
+          mainConfigFile: "app/js/main.js"
+          out: "dist/app/js/main.js"
+    clean: ["dist", "app/js"]
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-copy"
   grunt.loadNpmTasks "grunt-karma"
+  grunt.loadNpmTasks "grunt-contrib-requirejs"
+  grunt.loadNpmTasks "grunt-contrib-clean"
+
+  grunt.registerTask "dist", ["coffee", "copy:template", "requirejs", "copy:build"]

@@ -12,7 +12,9 @@
     "grunt-contrib-watch": "latest",
     "grunt-contrib-copy": "latest",
     "karma": "canary",
-    "grunt-karma": "latest"
+    "grunt-karma": "latest",
+    "grunt-contrib-requirejs": "latest",
+    "grunt-contrib-clean": "latest"
   },
   "scripts": {
     "grunt": "node_modules/.bin/grunt"
