@@ -3,3 +3,4 @@ app/vendor
 app/js
 node_modules
 test-results.xml
+dist
