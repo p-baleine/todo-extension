@@ -13,5 +13,5 @@ require [
 ], ($, Backbone, App) ->
   $(->
     new App
-    Backbone.history.start()
+    Backbone.history.start silent: true
   )
