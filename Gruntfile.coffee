@@ -59,7 +59,11 @@ module.exports = (grunt) ->
           name: "main"
           mainConfigFile: "app/js/main.js"
           out: "dist/app/js/main.js"
-    clean: ["dist", "app/js"]
+    zip:
+      dist:
+        src: "dist/*"
+        dest: "dist.zip"
+    clean: ["dist", "dist.js", "app/js"]
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-watch"
@@ -67,5 +71,13 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-karma"
   grunt.loadNpmTasks "grunt-contrib-requirejs"
   grunt.loadNpmTasks "grunt-contrib-clean"
+  grunt.loadNpmTasks "grunt-zip"
 
-  grunt.registerTask "dist", ["coffee", "copy:template", "requirejs", "copy:build"]
+  grunt.registerTask "dist", [
+    "clean"
+    "coffee"
+    "copy:template"
+    "requirejs"
+    "copy:build"
+    "zip"
+  ]

@@ -14,7 +14,8 @@
     "karma": "canary",
     "grunt-karma": "latest",
     "grunt-contrib-requirejs": "latest",
-    "grunt-contrib-clean": "latest"
+    "grunt-contrib-clean": "latest",
+    "grunt-zip": "latest"
   },
   "scripts": {
     "grunt": "node_modules/.bin/grunt"
