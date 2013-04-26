@@ -61,7 +61,8 @@ module.exports = (grunt) ->
           out: "dist/app/js/main.js"
     zip:
       dist:
-        src: "dist/*"
+        cwd: "dist/"
+        src: ["dist/**/*"]
         dest: "dist.zip"
     clean: ["dist", "dist.js", "app/js"]
 

@@ -3,7 +3,7 @@
 
   "name": "TODO",
   "description": "Simple TODO app",
-  "version": "0.0.1",
+  "version": "0.0.4",
 
   "browser_action": {
     "default_icon": "icon.png",
