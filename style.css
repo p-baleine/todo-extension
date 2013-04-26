@@ -102,9 +102,7 @@ ul#filters a {
   font-weight: normal;
   color: #808080;
 }
-ul#filters.none a[href="#index"],
-ul#filters.active a[href*="active"],
-ul#filters.completed a[href*="completed"] {
+ul#filters a.on {
   font-weight: bold;
 }
 

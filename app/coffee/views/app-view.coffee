@@ -13,14 +13,16 @@ define [
       "keydown [name=new-item]": "create"
 
     initialize: ->
-      @collection.bind "reset", @render
+      @collection.bind "reset", @render, "none"
       @collection.bind "change-remain remove add", @updateStats
 
-    render: (filter = "none") =>
+    render: (filter) =>
+      filter = "none" unless _.isString filter
       @$el.html @template(remain: @collection.remain())
       @listView = new ListView el: @$("#list-container"), collection: @collection
       @listView.render filter
-      @$("#filters").removeClass().addClass filter
+      @$("#filters a").removeClass "on"
+      @$("#filters .#{filter}").addClass "on"
       @
 
     create: (e) ->

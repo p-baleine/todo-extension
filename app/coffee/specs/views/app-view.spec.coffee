@@ -72,6 +72,9 @@ define [
         @view.render()
         expect(@listViewRenderSpy.called).to.be.ok()
 
+      it "should add class `on` to index anchor", ->
+        expect(@view.render().$("#filters .none").hasClass("on")).to.be.ok()
+
       describe "render with filter", ->
 
         it "should render ListView with filter", ->
