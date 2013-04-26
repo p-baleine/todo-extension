@@ -43,3 +43,9 @@ $ grunt karma:unit # in another tab
 ```
 
 Then start BDD!
+
+## Build
+
+```bash
+$ grunt dist
+```
