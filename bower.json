@@ -2,15 +2,15 @@
   "name": "TODO Chrome Extension",
   "version": "0.0.1",
   "dependencies": {
-    "requirejs": null,
-    "requirejs-text": null,
-    "jquery": null,
-    "backbone-amd": null,
-    "underscore-amd": null,
+    "requirejs": "latest",
+    "requirejs-text": "latest",
+    "jquery": "latest",
+    "backbone-amd": "latest",
+    "underscore-amd": "latest",
     "backbone.chromeStorage": "git://github.com/scryptmouse/Backbone.ChromeStorage.git"
   },
   "devDependencies": {
-    "expect": null,
+    "expect": "latest",
     "sinon": "http://sinonjs.org/releases/sinon-1.6.0.js",
     "Squire.js": "git://github.com/iammerrick/Squire.js.git"
   }
