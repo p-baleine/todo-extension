@@ -80,6 +80,8 @@ module.exports = (grunt) ->
 
   grunt.loadTasks "tasks"
 
+  grunt.registerTask "default", "karma:unit"
+
   grunt.registerTask "dist", [
     "clean"
     "coffee"
