@@ -13,7 +13,8 @@ module.exports = (grunt) ->
 
       grunt.log.write "Bump version #{filepath}..."
       file = grunt.file.readJSON(filepath)
-      file.version = version if file.version?
+      return unless file.version?
+      file.version = version
 
       try
         grunt.file.write filepath, JSON.stringify(file, null, 2)
