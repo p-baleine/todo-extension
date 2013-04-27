@@ -7,7 +7,7 @@ define [
   describe "todo", ->
 
     beforeEach ->
-      @collection
+      @collection = new Backbone.Collection
       @model = new Todo {}, collection: @collection
 
     it "should be an instance of Backbone.Model", ->
