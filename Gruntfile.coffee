@@ -65,6 +65,10 @@ module.exports = (grunt) ->
         src: ["dist/**/*"]
         dest: "dist.zip"
     clean: ["dist", "dist.js", "app/js"]
+    bumpVersion:
+      dist:
+        files:
+          src: ["package.json", "bower.json", "manifest.json"]
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-watch"
@@ -73,6 +77,8 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-requirejs"
   grunt.loadNpmTasks "grunt-contrib-clean"
   grunt.loadNpmTasks "grunt-zip"
+
+  grunt.loadTasks "tasks"
 
   grunt.registerTask "dist", [
     "clean"
