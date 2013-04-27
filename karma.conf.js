@@ -20,6 +20,7 @@ files = [
   REQUIRE_ADAPTER,
 
   "app/vendor/expect/expect.js",
+  "app/vendor/expect-change/lib/expect-change.js",
   "app/vendor/sinon/index.js",
 
   { pattern: "app/vendor/Squire.js/src/Squire.js", included: false },

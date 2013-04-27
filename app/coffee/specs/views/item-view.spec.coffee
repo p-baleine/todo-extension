@@ -84,8 +84,8 @@ define [
           expect(@saveSpy.lastCall.args[0]).to.have.property "title", @content
   
         it "should remove `editable` class from el", ->
-          @view.$(".edit").trigger @event
-          expect(@view.$el.hasClass("editable")).to.not.be.ok()
+          expect(=> @view.$(".edit").trigger @event)
+            .to.change(=> @view.$el.hasClass("editable")).from(on).to(off)
 
       describe "when key pressed other than enter key", ->
 
@@ -116,9 +116,10 @@ define [
         expect(@saveSpy.lastCall.args[0]).to.have.property "done", true
 
       it "should add class `done` to el", ->
-        @view.$(".done").prop "checked", true
-        @view.$(".done").change()
-        expect(@view.$el.hasClass("done")).to.be.ok()
+        expect(=>
+          @view.$(".done").prop "checked", true
+          @view.$(".done").change()
+        ).to.change(=> @view.$el.hasClass("done")).from(off).to(on)
 
     describe "delete", ->
 
@@ -137,5 +138,5 @@ define [
         expect(@destroySpy.called).to.be.ok()
 
       it "should remove deleted todo view", ->
-        @view.$(".destroy").click()
-        expect(@view.$el.closest("html")).to.empty()
+        expect(=> @view.$(".destroy").click())
+          .to.change(=> @view.$el.closest("html").length).to 0

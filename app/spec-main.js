@@ -6,6 +6,7 @@ var tests = Object.keys(window.__karma__.files).filter(function (file) {
 
 var paths = {
   "expect": "../vendor/expect/expect",
+  "expect-chainge": "../vendor/expect-change/lib/expect-change",
   "Squire": "../vendor/Squire.js/src/Squire",
   "require": "../vendor/requirejs/require",
   "text": "../vendor/requirejs-text/text",

@@ -12,6 +12,7 @@
   "devDependencies": {
     "expect": "latest",
     "sinon": "http://sinonjs.org/releases/sinon-1.6.0.js",
-    "Squire.js": "git://github.com/iammerrick/Squire.js.git"
+    "Squire.js": "git://github.com/iammerrick/Squire.js.git",
+    "expect-change": "latest"
   }
 }
