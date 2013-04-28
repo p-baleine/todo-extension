@@ -29,11 +29,11 @@ files = [
   { pattern: "app/vendor/underscore-amd/underscore.js", included: false },
   { pattern: "app/vendor/backbone-amd/backbone.js", included: false },
 
-  { pattern: "app/js/**/*.js", included: false },
+  { pattern: "app/js/**/!(spec-main).js", included: false },
 
   { pattern: "app/js/templates/*.html", included: false },
 
-  "app/spec-main.js"
+  "app/js/spec-main.js"
 ];
 
 // list of files to exclude
