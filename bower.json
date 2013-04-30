@@ -1,6 +1,6 @@
 {
   "name": "TODO Chrome Extension",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "dependencies": {
     "requirejs": "latest",
     "requirejs-text": "latest",
