@@ -1,18 +1,14 @@
 {
   "manifest_version": 2,
-
   "name": "TODO",
   "description": "Simple TODO app",
-  "version": "0.0.4",
-
+  "version": "0.0.5",
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "todo.html"
   },
-
- "permissions": [
+  "permissions": [
     "storage"
   ],
-
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

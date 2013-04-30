@@ -17,7 +17,7 @@ module.exports = (grunt) ->
       file.version = version
 
       try
-        grunt.file.write filepath, JSON.stringify(file, null, 2)
+        grunt.file.write filepath, JSON.stringify(file, null, 2) + "\n"
         grunt.log.ok()
       catch e
         grunt.log.error()
